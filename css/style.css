@@ -1,0 +1,130 @@
+/* これは新サービスには適応しない */
+header {
+    text-align: center;
+}
+body {
+    user-select: none;
+    color: white;
+    background-color: black;
+}
+/* ここまで */
+
+.main_container {
+    color: black;
+    height: 600px;
+    margin: 0 auto;
+    background-image: url("https://one-piece.com/assets/img/toppage/PFA_20th.jpg");
+    background-size: cover;
+    width: 75%;
+    text-align: center;
+    border-radius: 15px;
+}
+.contents {
+    position: relative;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+}
+#myimage {
+    height: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    border-radius: 20px;
+    bottom: 30px;
+}
+.main_image {
+    width: 75%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* カラフルボタン */
+.btn {
+    background: linear-gradient(-225deg, #00d3cf 0%, #6257ff 56%, #ff1f3d 100%);
+    color: white;
+    border: 1px solid #c28c04;
+    padding: 15px 60px;
+    top: 70%;
+    transform: translateY(-50%);
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn.slide-bg {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn.slide-bg::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-225deg, #00d3cf 0%, #6257ff 56%, #ff1f3d 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    z-index: -1;
+}
+
+.btn.slide-bg:hover {
+    color: white;
+}
+
+.btn.slide-bg:hover::before {
+    -webkit-transform: none;
+    transform: none;
+}
+/* ここまでカラフルボタン */
+
+/* ここからcount要素のスタイルを整える */
+#count {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+    font-size: 100px;
+    text-transform: uppercase;
+    font-family: verdana;
+    color:white;
+    text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px #919191,
+        1px 4px 1px #919191, 1px 5px 1px #919191, 1px 6px 1px #919191,
+        1px 7px 1px #919191, 1px 8px 1px #919191, 1px 9px 1px #919191,
+        1px 10px 1px #919191, 1px 18px 6px rgba(16, 16, 16, 0.4),
+        1px 22px 10px rgba(16, 16, 16, 0.2), 1px 25px 35px rgba(16, 16, 16, 0.2),
+        1px 30px 60px rgba(16, 16, 16, 0.4);
+}
+/* ここまでcount要素 */
+
+/* フェードインアニメーション */
+.fade {
+    animation: fadeIn 1s ease 1 normal;
+}
+
+@keyframes fadeIn {
+    /*animetion-nameで設定した値を書く*/
+
+    0% {
+        opacity: 0;
+    } /*アニメーション開始時は不透明度0%*/
+
+    100% {
+        opacity: 1;
+    } /*アニメーション終了時は不透明度100%*/
+}
+/* ここまでアニメーション */
