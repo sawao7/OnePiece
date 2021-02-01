@@ -67,6 +67,8 @@ char_voices.forEach((voice) => {
 
 //start_btnをクリックしたらready()に行く
 start_btn.addEventListener("click", function () {
+    //キーをうちこめるようにする
+    key_bool = true;
     //エンディングを初期化 もう一度用
     end_music_1.pause();
     end_music_1.currentTime = 0;
