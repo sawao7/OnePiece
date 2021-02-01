@@ -8,12 +8,14 @@ const count_div = document.querySelector("#count");
 const display_div = document.querySelector(".display");
 const japanese_h1 = document.querySelector("#japanese");
 const word_h2 = document.querySelector("#word");
-const score_div = document.querySelector("#score");
+const scores_div = document.querySelector(".scores");
+const wpm_p = document.querySelector(".WPM");    //divのつもりだったがpでスタイルを設定してしまった
+const percent_div = document.querySelector(".percent")
 const my_image = document.querySelector("#my_image");
 
 //ゲーム要素の指定
 let ready_time = 3; //カウントダウン 3秒に設定
-let time_limit = 1; //時間制限 60秒
+let time_limit = 60; //時間制限 60秒
 let total_score = 0; //全体のスコア
 let correct = 0; //正解タイプ数
 let correct_bonus = 0; //名言のフレーズごとにボーナス
@@ -26,10 +28,12 @@ let key_bool = true;  //キー入力が可能かどうか trueは可能
 
 //ゲームの効果音
 let efffect_1 = new Audio("/music/effect_1.mp3");
+//エンディング音楽
+let end_music_1 = new Audio("/music/end_music_1.mp3");
 
 // onepiece キャラのボイス
 let char_voices =
-    "/music/sound_1.mp3 /music/sound_2.mp3 /music/sound_3.mp3 /music/sound_4.mp3 /music/sound_5.mp3 /music/sound_6.mp3 /music/sound_7.mp3 /music/sound_8.mp3 /music/sound_9.mp3 /music/sound_10.mp3 /music/sound_11.mp3";
+    "/music/sound_1.mp3 /music/sound_2.mp3 /music/sound_3.mp3 /music/sound_4.mp3 /music/sound_5.mp3 /music/sound_6.mp3 /music/sound_7.mp3 /music/sound_8.mp3 /music/sound_9.mp3 /music/sound_10.mp3 /music/sound_11.mp3 /music/sound_12.mp3 /music/sound_13.mp3";
 
 // 画像 一旦 集めてみた カラー限定
 let images_dimo =
@@ -37,13 +41,13 @@ let images_dimo =
 
 //画像 本番
 let images_source =
-    "https://livedoor.blogimg.jp/yossikuppa/imgs/0/f/0f5f0f37.jpg https://wordstacks.nocebo.jp/storage/posts/164/0.webp?undefined https://pbs.twimg.com/media/EZv6az_UcAAnSuF.jpg https://blogimg.goo.ne.jp/user_image/08/03/38f1cb9728db1938405b70898d8fcc7b.png https://i.gyazo.com/042fded2457c57f1f7007e0c2f7949f8.jpg https://d2l930y2yx77uc.cloudfront.net/production/uploads/images/21990220/picture_pc_fd34ba0a6635efabbfb7920d43d8ff4a.jpeg?width=800 https://pics.prcm.jp/01011214/49794337/jpeg/49794337_480x374.jpeg https://i.gyazo.com/b438ecdecba750833a98d324ef02e5b6.png https://blogimg.goo.ne.jp/user_image/5b/7a/439e2115d0d4fdc1078ff35004098383.png https://i.gyazo.com/c4fd8740191d3935df8eae71eccd413e.jpg https://i.gyazo.com/9857b483e10391a82b6be06f2ea6c9a0.jpg";
+    "https://livedoor.blogimg.jp/yossikuppa/imgs/0/f/0f5f0f37.jpg https://wordstacks.nocebo.jp/storage/posts/164/0.webp?undefined https://pbs.twimg.com/media/EZv6az_UcAAnSuF.jpg https://blogimg.goo.ne.jp/user_image/08/03/38f1cb9728db1938405b70898d8fcc7b.png https://i.gyazo.com/042fded2457c57f1f7007e0c2f7949f8.jpg https://d2l930y2yx77uc.cloudfront.net/production/uploads/images/21990220/picture_pc_fd34ba0a6635efabbfb7920d43d8ff4a.jpeg?width=800 https://pics.prcm.jp/01011214/49794337/jpeg/49794337_480x374.jpeg https://i.gyazo.com/b438ecdecba750833a98d324ef02e5b6.png https://blogimg.goo.ne.jp/user_image/5b/7a/439e2115d0d4fdc1078ff35004098383.png https://i.gyazo.com/c4fd8740191d3935df8eae71eccd413e.jpg https://i.gyazo.com/9857b483e10391a82b6be06f2ea6c9a0.jpg https://livedoor.blogimg.jp/yossikuppa/imgs/d/3/d3da83ad-s.jpg https://i.gyazo.com/fbb57e26aa111a2d105626e52e190ab4.jpg";
 
 //名言 必ずスペースでくぎる
 let onepiece_ja_1_source =
-    "海賊王に、俺はなる！ この海で一番自由なのが海賊王だ！ 女の嘘は、許すのが男だ 力に屈したら男に生まれた意味がねえだろう 本心を、言えよ！ 今の時代を作れるのは、今を生きてる人間だけだよ 人の夢は!終わらねえ! 人はいつ死ぬと思う...人に忘れられた時さ！ 俺は友達を傷つける奴は許さない！ 未来を変える権利は皆平等にあるんだよ！ 俺は一生神には祈らねえ！";
+    "海賊王に、俺はなる！ この海で一番自由なのが海賊王だ！ 女の嘘は、許すのが男だ 力に屈したら男に生まれた意味がねえだろう 本心を、言えよ！ 今の時代を作れるのは、今を生きてる人間だけだよ 人の夢は!終わらねえ! 人はいつ死ぬと思う...人に忘れられた時さ！ 俺は友達を傷つける奴は許さない！ 未来を変える権利は皆平等にあるんだよ！ 俺は一生神には祈らねえ！ いきなりキングは取れねエだろうよい 勝者だけが正義だ！";
 let onepiece_en_1_source =
-    "kaizokuouni,orehanaru! konoumideitibannziyuunanogakaizokuouda! onnnanousoha,yurusunogaotokoda tikaranikussitaraotokoniumaretaimiganeedarou honnsinnwo,ieyo! imanozidaiwotukurerunoha,imawoikiteruninngenndakedayo hitonoyumeha!owaranee! hitohaitusinutoomou...hitoniwasureraretatokisa! orehatomodatiwokizutukeruyatuhayurusanai! miraiwokaerukennrihaminabyoudouniarunndayo! orehaissyoukaminihainoranee!";
+    "kaizokuouni,orehanaru! konoumideitibannziyuunanogakaizokuouda! onnnanousoha,yurusunogaotokoda tikaranikussitaraotokoniumaretaimiganeedarou honnsinnwo,ieyo! imanozidaiwotukurerunoha,imawoikiteruninngenndakedayo hitonoyumeha!owaranee! hitohaitusinutoomou...hitoniwasureraretatokisa! orehatomodatiwokizutukeruyatuhayurusanai! miraiwokaerukennrihaminabyoudouniarunndayo! orehaissyoukaminihainoranee! ikinarikinnguhatoreneedarouyoi syousyadakegaseigida!";
 //ここまで名言
 
 // 正規表現 スペースで区切るようにしている
@@ -63,6 +67,9 @@ char_voices.forEach((voice) => {
 
 //start_btnをクリックしたらready()に行く
 start_btn.addEventListener("click", function () {
+    //エンディングを初期化 もう一度用
+    end_music_1.pause();
+    end_music_1.currentTime = 0;
     // 問題を初期化 もう一度ボタンを押した時用
     onepiece_en_1 = onepiece_en_1_source;
     onepiece_ja_1 = onepiece_ja_1_source;
@@ -72,6 +79,8 @@ start_btn.addEventListener("click", function () {
     main_image.style.display = "none";
     start_btn.style.display = "none";
     end_image.style.display = "none";
+    //スコア全体を消す
+    scores_div.style.display = "none";
     //timer要素に値を代入
     timer_div.innerHTML = "<i class='fas fa-stopwatch'></i>60";
     ready();
@@ -100,9 +109,9 @@ function ready() {
         }
         ready_time_clone--;
         if (ready_time_clone < 0) {
-            //キャラの音声をとめる
-            char_voices_list[random].pause();
-            char_voices_list[random].currentTime = 0;
+            //effect_1をストップ
+            efffect_1.pause();
+            efffect_1.currentTime = 0;
             //count_divを非表示
             count_div.innerHTML = "";
             //タイマーストップ
@@ -134,6 +143,12 @@ function GameStart() {
         //もし残り時間が〇〇秒以下なら時計の文字を赤くする
         //もし残り時間が0秒ならばend_image要素を表示し、そのほかを非表示にする
         if (time_limit_clone - 1 == 0) {
+            //キャラの音声をとめる
+            char_voices_list[random].pause();
+            char_voices_list[random].currentTime = 0;
+            //effect_1を再生
+            efffect_1.play();
+            //end_image要素を表示
             end_image.style.display = "inline";
             //display_div要素をなくす
             display_div.style.display = "none";
@@ -183,12 +198,28 @@ function Question() {
 
 //GameFinish()の定義 ゲームを終了した後の後処理やスコア表示を行う
 function GameFinish() {
-    //end_image要素をなくす
-    end_image.style.display = "none";
+    //effect_1を止める
+    efffect_1.pause();
+    efffect_1.currentTime = 0;
+    //エンディングを流す
+    end_music_1.play();
+    //end_image要素の画像をエンディング画像に変更
+    end_image.setAttribute(
+        "src",
+        "https://i.ytimg.com/vi/sGVkLN9Novg/maxresdefault.jpg"
+    );
+    //main_imageを表示
+    main_image.style.display = "inline";
+    //main_imageにendding_imageクラスを追加し、位置をずらす
+    main_image.classList.add("endding_image");
     //total_scoreの定義
     total_score = 0;
-    //score_div要素の表示 WPM(一分間に打ったタイプ数)
-    score_div.innerHTML = "WPM : " + correct;
+    // スコア全体の表示
+    scores_div.style.display = "block";
+    //WPMを代入
+    wpm_p.innerHTML = "WPM : " + correct;
+    //正答率を代入
+    percent_div.innerHTML = "VALIDITY : "+ Math.floor(((correct/(correct+mistake))*100)) + "%";
     // ゲーム要素の初期化
     random = 0;
     current_type = 0;

@@ -33,7 +33,12 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+/* エンディングのときのロゴの位置をずらす */
+.endding_image {
+    top: 53%;
+    height: 53%;
+    width: 82%;
+}
 /* カラフルボタン */
 .btn {
     font-family: "Times New Roman";
@@ -45,7 +50,7 @@ body {
     padding: 15px 60px;
     left: 50%;
     top: 70%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 15px;
     font-weight: 900;
     font-size: 30px;
@@ -79,7 +84,7 @@ body {
 }
 
 .btn.slide-bg:hover {
-    text-shadow:0 0 5px white;
+    text-shadow: 0 0 5px white;
     color: #f1c500;
 }
 
@@ -100,94 +105,95 @@ body {
     font-size: 100px;
     text-transform: uppercase;
     font-family: verdana;
-    color:#e9ec0f;
+    color: #e9ec0f;
     text-shadow: 1px 1px 1px #ceca00, 1px 2px 1px #ceca00, 1px 3px 1px #ceca00,
         1px 4px 1px #ceca00, 1px 5px 1px #ceca00, 1px 6px 1px #ceca00,
         1px 7px 1px #ceca00, 1px 8px 1px #ceca00, 1px 9px 1px #ceca00,
         1px 10px 1px #ceca00, 1px 18px 6px rgba(16, 16, 16, 0.4),
         1px 22px 10px rgba(16, 16, 16, 0.2), 1px 25px 35px rgba(16, 16, 16, 0.2),
-        1px 30px 60px rgba(16, 16, 16, 0.4),0 0 5px white;
+        1px 30px 60px rgba(16, 16, 16, 0.4), 0 0 5px white;
 }
 /* ここまでcount要素 */
 
 /* timer要素 */
-#timer{
+#timer {
     display: flex;
     position: absolute;
-    color:white;
-    text-shadow:0 5px 5px black;
+    color: white;
+    text-shadow: 0 5px 5px black;
     font-weight: bold;
     top: 5%;
     left: 93%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     font-size: 40px;
     font-family: DJB Get Digital;
 }
 /* ここまで */
 
 /* 連続タイピング continuous要素 */
-#continuous{
+#continuous {
     display: none;
     top: 5%;
     left: 2%;
-    transform: translate(-50%,-50%);
-    font-size:30px;
-    position:absolute;
-    color:rgb(246, 255, 163);
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    position: absolute;
+    color: rgb(246, 255, 163);
     text-shadow: 0px 0px 10px #000000;
 }
 /* ここまで */
 
 /* fontawesome要素 */
-.fa-stopwatch{
+.fa-stopwatch {
     transform: translateX(-30%);
 }
 /* ここまで */
 
 /* display要素 */
-.display{
+.display {
+    overflow: hidden;
     display: none;
     box-shadow: 0 0 30px rgb(71, 71, 71);
     border: 5px solid white;
     position: relative;
     top: 10%;
-    width:80%;
+    width: 80%;
     margin: 0 auto;
     height: 200px;
     border-radius: 15px;
-    background-color:rgb(0, 0, 0,0.8);
+    background-color: rgb(0, 0, 0, 0.8);
 }
 /* ここまで */
 
 /* japanese要素 word要素*/
-#japanese{
+#japanese {
     /* font-family: はんなり明朝; */
-    font-family: 'Sawarabi Mincho', serif;
-    color:white;
+    font-family: "Sawarabi Mincho", serif;
+    color: white;
     font-weight: 100;
     letter-spacing: 2px;
     position: absolute;
     width: 100%;
     left: 50%;
     top: 30%;
-    transform: translate(-50%,-50%);
+    font-size: 30px;
+    transform: translate(-50%, -50%);
     text-shadow: 2px 2px 2px rgb(0, 0, 0);
 }
-#word{
+#word {
     /* font-family: 'Allura', cursive; */
-    font-family:'Courgette', cursive;
+    font-family: "Courgette", cursive;
     /* font-family: 'Pinyon Script', cursive; */
-    color:white;
+    color: white;
     position: absolute;
     left: 50%;
     top: 65%;
     letter-spacing: 3px;
     font-size: 25px;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     text-shadow: 2px 2px 2px rgb(0, 0, 0);
 }
 /* ここまで */
-
 
 /* my_image要素 名言の場面の写真*/
 #my_image{
@@ -202,25 +208,79 @@ body {
 }
 
 /* end_image要素 to be continued */
-.end_image{
+.end_image {
     display: none;
     width: 100%;
     height: 100%;
     position: absolute;
     top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* ここまで */
+/* スコア全体 */
+.scores{
+    display: none;
+}
 
+/* スコア表示の型 score_image要素 */
+.score_image {
+    box-shadow: 0 0 20px gray;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    top: 50%;
+    left: 50%;
+}
+/* 右の要素か左の要素か */
+.left {
+    left: 20%;
+}
+.right {
+    left: 80%;
+}
+
+/* 実際のスコア表示 score,WPM,percent,lank */
+.score {
+    box-shadow: 0 0 20px gray;
+    text-shadow: 0 0 5px white;
+    font-family: "Times New Roman";
+    color: rgb(67, 51, 38);
+    font-weight: bold;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    text-align: center;
+}
+.WPM {
+    top: 76%;
+    letter-spacing: 5px;
+    padding: 4px 8px;
+    border: 1px solid rgb(67, 51, 38);
+    transform: scale(1, 2) translate(-50%, -50%);
+    left: 20%;
+}
+.percent {
+    line-height: 42px;
+    border: 1px solid rgb(67, 51, 38);
+    width: 240px;
+    top: 81%;
+    transform: scale(1,2) translate(-50%, -50%);
+    left: 80.5%;
+}
+
+/* アニメーションゾーン */
 /* フェードインアニメーション */
 .fade {
     animation: fadeIn 1s ease 1 normal;
 }
 /* 大きくなるアニメーション */
-.bigger{
-    animation:bigger 1s ease 1 normal;
+.bigger {
+    animation: bigger 1s ease 1 normal;
+}
+/* 横に広がるアニメーション */
+.wide {
+    animation: wide 1s ease 1 normal;
 }
 
 @keyframes fadeIn {
@@ -234,21 +294,35 @@ body {
         opacity: 1;
     } /*アニメーション終了時は不透明度100%*/
 }
-@keyframes bigger{
-    0%{
+@keyframes bigger {
+    0% {
         opacity: 0.5;
         width: 0%;
         height: 0%;
+        line-height: 100%;
     }
     /* 50%{
         height: 150%;
         width: 150%;
         opacity: 1;
     } */
-    100%{
+    100% {
         height: 150%;
         width: 150%;
         opacity: 1;
+    }
+}
+@keyframes wide {
+    0% {
+        opacity: 0;
+        transform: translate(-100%, -50%);
+    }
+    80% {
+        transform: translate(-48%, -50%);
+    }
+    100% {
+        opacity: 1;
+        width: 100%;
     }
 }
 /* ここまでアニメーション */

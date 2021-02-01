@@ -4,11 +4,23 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>OnePiece</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Courgette&display=swap"
+            rel="stylesheet"
+        />
         <link
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
@@ -23,7 +35,10 @@
         </header>
         <div class="main_container">
             <div class="contents">
-                <img src="https://i.pinimg.com/originals/65/eb/70/65eb70a4aad8ceb926b44cc4d6e7fdd9.jpg" class="end_image bigger">
+                <img
+                    src="https://i.pinimg.com/originals/65/eb/70/65eb70a4aad8ceb926b44cc4d6e7fdd9.jpg"
+                    class="end_image bigger"
+                />
                 <img
                     src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/One_Piece_Logo.svg/1200px-One_Piece_Logo.svg.png"
                     class="main_image"
@@ -35,21 +50,31 @@
                 <div id="continuous"><i class="fas fa-star"></i></div>
                 <div id="count"></div>
                 <div class="display">
-                    <h1><div id="japanese"></div></h1>
-                    <h2><div id="word"></div></h2>
+                    <h1><div id="japanese" class="wide"></div></h1>
+                    <h2><div id="word" class="fade"></div></h2>
                 </div>
-                <div id="score">
-                    <!-- <h1>
-                        あなたのランクは...
-                        <span style="font-size: 40px"> A </span> です
-                    </h1>
-                    スコア :
-                    <span style="font-size: 40px"> 100 </span> 点
-                    <hr />
-                    正タイプ数: 200 <br />ミスタイプ数: 50 <br />正答率
-                    30 %" -->
+                <!-- スコア全体 -->
+                <div class="scores fade">
+                    <!-- スコア表示に使う手配書の型 -->
+                    <img
+                        src="https://stat.ameba.jp/user_images/20170727/12/neo-izayoi-onepiece/5f/e0/j/o0636096013991537524.jpg?caw=800"
+                        class="score_image right"
+                    />
+                    <img
+                        src="https://stat.ameba.jp/user_images/20170727/12/neo-izayoi-onepiece/5f/e0/j/o0636096013991537524.jpg?caw=800"
+                        class="score_image left"
+                    />
+                    <!-- スコア表示のスライドで切り替える画像 -->
+                    <img src="" class="" />
+                    <!-- 実際のスコア -->
+                    <!-- 左側のスコア WPM -->
+                    <p class="score WPM"></p>
+                    <!-- 右側のスコア 正答率 -->
+                    <div class="score percent"></div>
+                    <!-- 中央のランク -->
+                    <!-- <div class = "lank">Aランク</div> -->
                 </div>
-                <img src="" id="my_image" />
+                <img src="" class="fade" id="my_image" />
             </div>
         </div>
         <script src="js/main.js"></script>
