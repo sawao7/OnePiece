@@ -9,8 +9,8 @@ const display_div = document.querySelector(".display");
 const japanese_h1 = document.querySelector("#japanese");
 const word_h2 = document.querySelector("#word");
 const scores_div = document.querySelector(".scores");
-const wpm_p = document.querySelector(".WPM");    //divのつもりだったがpでスタイルを設定してしまった
-const percent_div = document.querySelector(".percent")
+const wpm_p = document.querySelector(".WPM"); //divのつもりだったがpでスタイルを設定してしまった
+const percent_div = document.querySelector(".percent");
 const my_image = document.querySelector("#my_image");
 
 //ゲーム要素の指定
@@ -23,13 +23,13 @@ let mistake = 0; //ミスタイプ数
 let current_type = 0; //現在の名言のあってるタイプ数
 let current_answer; //現在のタイプの正解
 let random = 0; //出題をランダムで選ぶ変数
-let key_bool = true;  //キー入力が可能かどうか trueは可能
+let key_bool = true; //キー入力が可能かどうか trueは可能
 //ここまでゲーム要素
 
 //ゲームの効果音
-let efffect_1 = new Audio("/music/effect_1.mp3");
+let efffect_1 = new Audio("music/effect_1.mp3");
 //エンディング音楽
-let end_music_1 = new Audio("/music/end_music_1.mp3");
+let end_music_1 = new Audio("music/end_music_1.mp3");
 
 // onepiece キャラのボイス
 let char_voices =
@@ -219,7 +219,8 @@ function GameFinish() {
     //WPMを代入
     wpm_p.innerHTML = "WPM : " + correct;
     //正答率を代入
-    percent_div.innerHTML = "VALIDITY : "+ Math.floor(((correct/(correct+mistake))*100)) + "%";
+    percent_div.innerHTML =
+        "VALIDITY : " + Math.floor((correct / (correct + mistake)) * 100) + "%";
     // ゲーム要素の初期化
     random = 0;
     current_type = 0;
@@ -252,7 +253,7 @@ document.addEventListener("keypress", (event) => {
         //正解キーを次の文字へ
         current_answer = onepiece_en_1[random].charAt(current_type);
     } //間違っていたら
-    else if(now_key !== current_answer && key_bool == true) {
+    else if (now_key !== current_answer && key_bool == true) {
         //mistakeを＋1
         mistake++;
     }
