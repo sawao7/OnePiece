@@ -33,7 +33,7 @@ let end_music_1 = new Audio("music/end_music_1.mp3");
 
 // onepiece キャラのボイス
 let char_voices =
-    "/music/sound_1.mp3 /music/sound_2.mp3 /music/sound_3.mp3 /music/sound_4.mp3 /music/sound_5.mp3 /music/sound_6.mp3 /music/sound_7.mp3 /music/sound_8.mp3 /music/sound_9.mp3 /music/sound_10.mp3 /music/sound_11.mp3 /music/sound_12.mp3 /music/sound_13.mp3";
+    "music/sound_1.mp3 music/sound_2.mp3 music/sound_3.mp3 music/sound_4.mp3 music/sound_5.mp3 music/sound_6.mp3 music/sound_7.mp3 music/sound_8.mp3 music/sound_9.mp3 music/sound_10.mp3 music/sound_11.mp3 music/sound_12.mp3 music/sound_13.mp3";
 
 // 画像 一旦 集めてみた カラー限定
 let images_dimo =
